@@ -1,0 +1,6 @@
+*.png
+*.json
+
+/__pycache__
+/venv
+/icons
