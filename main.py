@@ -1,5 +1,6 @@
 import discord
-import json
+import os
+from dotenv import load_dotenv
 import random
 from discord import app_commands
 from discord.ext import commands
@@ -11,13 +12,10 @@ last_roll = set()
     
 if __name__ == "__main__":
     bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
-    # Read key from file
-    with open("token.json") as fp:
-        data = json.load(fp)
-        BOT_TOKEN = data["key"]
-        
+    
+    load_dotenv()
+    BOT_TOKEN = os.getenv("DISCORD_API_KEY")
     data = patch.Patch_Data()
-
 
 @bot.event
 async def on_ready():
@@ -86,5 +84,5 @@ async def random_user(interaction: discord.Interaction, n: int = 1):
     mentions = " ".join(member.mention for member in selected)
 
     await interaction.response.send_message(f"{mentions}")
-        
+    
 bot.run(BOT_TOKEN)

@@ -1,6 +1,8 @@
+# Ignore all images generated/downloaded
+/icons
 *.png
-*.json
+
 
 /__pycache__
-/venv
-/icons
+.venv
+.env
